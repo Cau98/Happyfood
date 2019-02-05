@@ -8,7 +8,13 @@ import com.example.myapplication.R;
 
 
 public class ShopActivity extends AppCompatActivity {
+    public String name;
+    public int nportate;
 
+    public ShopActivity(String n, int portate){
+        this.name = n;
+        this.nportate = portate;
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

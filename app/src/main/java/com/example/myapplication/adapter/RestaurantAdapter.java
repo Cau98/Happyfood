@@ -1,6 +1,7 @@
 package com.example.myapplication.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
@@ -10,13 +11,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.activity.RestaurantActivity;
+import com.example.myapplication.activity.ShopActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
 
-    ArrayList<String> lista;
+    ArrayList<ShopActivity> lista ;
+
+
 
     @NonNull
     @Override
@@ -27,8 +33,11 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
     @Override
     public void onBindViewHolder(@NonNull RestaurantViewHolder restaurantViewHolder, int i) {
-        String mCurrent = lista.get(i);
-        restaurantViewHolder.wordItemView.setText(mCurrent);
+        String mCurrent = lista.get(i).name;
+        int value = lista.get(i).nportate;
+
+        restaurantViewHolder.wordItemView.setText(mCurrent+ "   " +String.valueOf(value));
+        int a =0;
 
     }
 
@@ -37,7 +46,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
         return lista.size();
     }
 
-    public RestaurantAdapter(ArrayList<String> lista){
+    public RestaurantAdapter(ArrayList<ShopActivity> lista){
         this.lista = lista;
     }
 
@@ -54,7 +63,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Re
 
         @Override
         public void onClick(View v) {
-            //cose a caso
+            //prima o poi farà qualcosa
+
         }
     }
 }
