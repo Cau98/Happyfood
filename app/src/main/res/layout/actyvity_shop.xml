@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".activity.ShopActivity"
+    android:orientation="vertical"
+    android:id="@+id/shoplayout">
+<LinearLayout
+    android:id="@+id/linear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recicleviewshop">
-    </android.support.v7.widget.RecyclerView>
+    android:orientation="horizontal">
+   <ImageView
+       android:layout_width="100dp"
+       android:layout_height="100dp"
+       android:background="@android:drawable/ic_menu_view"
+       />
+   <TextView
+       android:layout_width="wrap_content"
+       android:layout_height="match_parent"
+       android:text="Ristorante"
+       android:textSize="30dp"/>
+   <Button
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:text="Bottone"/>
 </LinearLayout>
+
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/linear"
+       android:id="@+id/relative"></android.support.v7.widget.RecyclerView>
+
+   <RelativeLayout
+       android:layout_alignParentBottom="true"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+
+
+      <TextView
+          android:id="@+id/totale"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Totale:"/>
+      <TextView
+          android:layout_toRightOf="@+id/totale"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/viewtot"/>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Ordine minimo: 10€     "
+          android:layout_alignParentRight="true"
+          />
+      <ProgressBar
+          android:id="@+id/progressbar"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          style="@android:style/Widget.ProgressBar.Horizontal"
+          android:layout_below="@+id/viewtot"
+          />
+      <Button
+          android:id="@+id/checkout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/progressbar"
+          android:text="Checkout"
+          android:enabled="false"/>
+
+   </RelativeLayout>
+
+
+
+
+</RelativeLayout>

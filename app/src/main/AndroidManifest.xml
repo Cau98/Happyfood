@@ -11,20 +11,25 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".activity.Register">
             <intent-filter>
                 <action android:name="android.intent.action.Register" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ShopActivity"> </activity>
-        <activity android:name=".activity.RestaurantActivity"></activity>
+        <activity android:name=".activity.ShopActivity"></activity>
+        <activity android:name=".activity.RestaurantActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

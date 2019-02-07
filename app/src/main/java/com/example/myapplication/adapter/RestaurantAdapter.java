@@ -5,65 +5,83 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.myapplication.R;
-import com.example.myapplication.activity.RestaurantActivity;
 import com.example.myapplication.activity.ShopActivity;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.zip.Inflater;
 
 public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder> {
 
-    ArrayList<ShopActivity> lista ;
+    ArrayList<String> list;
+    Context context;
+    private boolean isGrid;
+
+
+
 
 
 
     @NonNull
     @Override
     public RestaurantViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View mItemview = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.restaurant_item,viewGroup,false);
+        int layout = isGrid? R.layout.restaurant_item_grid : R.layout.restaurant_item;
+        View mItemview = LayoutInflater.from(viewGroup.getContext()).inflate(layout,viewGroup,false);
         return new RestaurantViewHolder(mItemview);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RestaurantViewHolder restaurantViewHolder, int i) {
-        String mCurrent = lista.get(i).name;
-        int value = lista.get(i).nportate;
+        String mCurrent = list.get(i);
+        restaurantViewHolder.wordItemView.setText(mCurrent);
 
-        restaurantViewHolder.wordItemView.setText(mCurrent+ "   " +String.valueOf(value));
-        int a =0;
 
     }
 
     @Override
     public int getItemCount() {
-        return lista.size();
+        return list.size();
     }
 
-    public RestaurantAdapter(ArrayList<ShopActivity> lista){
-        this.lista = lista;
+    public RestaurantAdapter(ArrayList<String> lista, Context context){
+        this.context = context;
+        this.list = lista;
+    }
+
+    public boolean isGrid() {
+        return isGrid;
+    }
+
+    public void setGrid(boolean grid) {
+        isGrid = grid;
     }
 
     public class RestaurantViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView wordItemView;
 
 
+
         public RestaurantViewHolder (View itemView) {
             super(itemView);
             wordItemView = itemView.findViewById(R.id.restaurantitem);
-            itemView.setOnClickListener(this);
+            wordItemView.setOnClickListener(this);
+
+
 
         }
 
         @Override
         public void onClick(View v) {
-            //prima o poi farà qualcosa
+            Intent intent = new Intent(context, ShopActivity.class);
+            context.startActivity(intent);
+
+
 
         }
     }
